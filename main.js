@@ -5,6 +5,9 @@ let allCells = document.querySelectorAll(".cell");
 let board = document.querySelector("#board");
 let restartBtn = document.querySelector("#restart");
 let winnerMsg = document.querySelector(".winner-msg");
+let player1 = document.querySelector(".player1");
+let player2 = document.querySelector(".player2");
+let draw = document.querySelector(".draw");
 
 const winner_result = [
   [0, 1, 2],
@@ -16,9 +19,12 @@ const winner_result = [
   [0, 4, 8],
   [2, 4, 6],
 ];
-let arrX = [];
-let arrO = [];
+let countO = 0;
+let countX = 0;
+let countDraw = 0;
+
 let hasFinished = false;
+
 allCells.forEach((cell) =>
   cell.addEventListener("click", handleClick, { once: true })
 );
@@ -38,9 +44,6 @@ function handleClick(e) {
   clickedClass(currentClick, currentClass);
   changeTurn();
   hasFinished = checkResult();
-  if (hasFinished) {
-    console.log("Array X : " + arrX);
-  }
 }
 
 function clickedClass(currentClick, currentClass) {
@@ -71,6 +74,9 @@ function checkResult() {
       )
     ) {
       winnerMsg.innerText = `X won`;
+      countX++;
+      player1.innerText = `Player (X): ${countX}`;
+
       return true;
     }
     if (
@@ -79,15 +85,21 @@ function checkResult() {
       )
     ) {
       winnerMsg.innerText = `O won`;
+      countO++;
+      player1.innerText = `Player (O): ${countO}`;
       return true;
     }
   }
   if (checkDraw()) {
     winnerMsg.innerText = `Draw`;
+    countDraw++;
+    draw.innerText = `Draw: ${countDraw}`;
+
     return true;
   }
   return false;
 }
+
 function checkDraw() {
   return [...allCells].every((item) => {
     return item.classList.contains(x_class) || item.classList.contains(o_class);
@@ -104,6 +116,9 @@ function newGame() {
     cell.addEventListener("click", handleClick, { once: true });
   });
   hasFinished = false;
-  winnerMsg.innerText = "";
+  if ((winnerMsg.innerText = `O won`)) {
+    oTurn = true;
+  }
   oTurn = false;
+  winnerMsg.innerText = "";
 }

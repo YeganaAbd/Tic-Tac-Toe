@@ -15,7 +15,7 @@ body {
 }
 
 .board {
-  margin-top: 200px;
+  margin-top: 150px;
   width: 100%;
   height: 100%;
   display: grid;
@@ -63,10 +63,8 @@ body {
   border: 15px solid white;
 }
 
-.win-msg {
-  margin-top: 50px;
+.result {
   display: flex;
-  justify-content: center;
   align-content: center;
   flex-direction: column;
   flex-wrap: wrap;
@@ -75,13 +73,14 @@ body {
   display: inline-flex;
 }
 .score-msg h2 {
-  margin: 20px;
+  margin-right: 50px;
 }
-
+.win-msg {
+  text-align: center;
+}
 #restart {
   font-size: 1.5rem;
-  margin: 10px;
-  width: 100px;
+  width: 120px;
   font-weight: 500;
   color: #f5f3f4;
   font-family: system-ui, -apple-system, system-ui, Helvetica, "Helvetica Neue",
@@ -90,7 +89,6 @@ body {
   background-color: #a4161a;
   padding: 0px 10px;
   border-radius: 0.25rem;
-  display: inline-flex;
 }
 
 #restart:hover,

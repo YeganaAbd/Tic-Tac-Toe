@@ -68,6 +68,14 @@ body {
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.score-msg {
+  display: inline-flex;
+}
+.score-msg h2 {
+  margin: 20px;
 }
 
 #restart {
@@ -82,6 +90,7 @@ body {
   background-color: #a4161a;
   padding: 0px 10px;
   border-radius: 0.25rem;
+  display: inline-flex;
 }
 
 #restart:hover,
